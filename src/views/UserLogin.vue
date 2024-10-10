@@ -68,6 +68,5 @@ const loginHandle = async()=>{
       notification.success({message:"🎉恭喜你，登录成功！"})
       router.replace("/home")
   }
-  
 }
 </script>

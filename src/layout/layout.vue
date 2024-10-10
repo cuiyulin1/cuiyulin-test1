@@ -21,9 +21,10 @@
             <Icon icon="uiw:file-text"  style="color: #4c5155"  class="w-[20px] h-[20px] ml-[2px] icon-hover"/>
           <span class="nav-text">事项</span>
         </MenuItem>
-        <MenuItem class="flex flex-col !p-[6px] !h-[60px]" key="5">
+        <MenuItem @click="repo" class="flex flex-col !p-[6px] !h-[60px]" key="5">
             <Icon icon="solar:code-square-linear"  style="color: #4c5155"  class="w-[20px] h-[20px] ml-[2px] icon-hover"/>
           <span class="nav-text">代码</span>
+          
         </MenuItem>
         <MenuItem class="flex flex-col !p-[6px] !h-[60px]" key="6">
             <Icon icon="mage:box-3d"  style="color: #4c5155" class="w-[20px] h-[20px] ml-[2px] icon-hover"/>
@@ -66,6 +67,9 @@ import { useRouter } from 'vue-router';
 import { Icon } from '@iconify/vue';
 const router = useRouter()
 
+const repo = ()=>{
+  router.push({path:"/coderepository"})
+}
 // const
   </script>
 
