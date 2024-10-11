@@ -3,12 +3,8 @@
     <div
       class="h-[40px] w-[150px] text-[20px] font-bold leading-[40px] flex justify-between"
     >
-      <div>
-        <Icon
-          icon="emojione:left-arrow"
-          class="mt-[10px] ml-[5px]"
-          @click="returnrepo"
-        />
+      <div class="w-[25px] h-[25px] mt-[10px] ml-[5px] bg-slate-300 flex justify-center">
+        <Icon icon="gravity-ui:arrow-left"  style="color: #0066ff" class="" @click="returnrepo"/>
       </div>
       <div>创建代码仓库</div>
     </div>
