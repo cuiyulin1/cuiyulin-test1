@@ -85,7 +85,7 @@ const loginHandle = async () => {
   const [err, res] = await to(getAccessToken(loginData));
   if (!err) {
     notification.success({ message: "🎉恭喜你，登录成功！" });
-    router.replace("/coderepository");
+    router.replace("/coderepository/recently");
   }
 };
 </script>

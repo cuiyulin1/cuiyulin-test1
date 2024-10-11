@@ -25,7 +25,6 @@
 import {Button} from "ant-design-vue"
 import {useRouter} from "vue-router"
 const router = useRouter()
-
 const addrepo = () =>{
   router.push({path:"/addrepo"})
 }

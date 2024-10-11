@@ -166,7 +166,6 @@
               {{ subItem.title }}
             </div>
           </div>
-          
         </div>
       </Menu>
     </LayoutSider>
@@ -226,20 +225,23 @@ const repo = () => {
 
 <style scoped>
 .menu-item {
-  background-color: rgb(189, 189, 189);
-  width: 300px;
-  height: 600px;
   cursor: pointer;
   user-select: none; /* 防止文本被选中 */
   margin: 0 20px;
 }
 
 .submenu {
-  margin-left: 50px; /* 子菜单缩进 */
-  float: left;
+  background-color: rgb(238, 238, 238);
+  width: 300px;
+  height: 600px;
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  box-shadow: 5px 5px 5px rgb(205, 205, 205);
 }
 
 .submenu-item {
-  margin:  40px 0; /* 子菜单项间距 */
+  margin: 40px 0; /* 子菜单项间距 */
+  padding-left: 40px;
 }
 </style>

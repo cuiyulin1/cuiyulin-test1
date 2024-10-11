@@ -1,55 +1,83 @@
 <template>
   <div>
     <div
-      class="h-[40px] w-[150px] text-[20px] font-bold leading-[40px] flex justify-between"
+      class="h-[80px] w-[200px] text-[20px] font-bold leading-[80px] flex justify-between"
     >
-      <div class="w-[25px] h-[25px] mt-[10px] ml-[5px] bg-slate-300 flex justify-center">
-        <Icon icon="gravity-ui:arrow-left"  style="color: #0066ff" class="" @click="returnrepo"/>
+      <div
+        class="w-[25px] h-[25px] mt-[30px] ml-[25px] flex justify-center rounded-[12px] sha"
+      >
+        <Icon
+          icon="gravity-ui:arrow-left"
+          style="color: #0066ff"
+          class="mt-[3px]"
+          @click="returnrepo"
+        />
       </div>
       <div>创建代码仓库</div>
     </div>
-    <div>
-      <div>
-        <div>所属项目<span>*</span></div>
-        <input type="text" placeholder="所属项目" />
+    <div class="ml-[25px]">
+      <div class="h-[80px]">
+        <div class="font-bold mb-[5px] text-[16px]">
+          所属项目<span class="text-[#ff0000] pl-[5px]">*</span>
+        </div>
+        <input
+          type="text"
+          placeholder="所属项目"
+          class="w-[350px] h-[35px] pl-[15px]"
+        />
       </div>
 
-      <div class="flex w-[100%]">
+      <div class="flex w-[100%] h-[80px]">
         <div>
-          <div>仓库类型<span>*</span></div>
+          <div class="font-bold mb-[5px] text-[16px]">
+            仓库类型<span class="text-[#ff0000] pl-[5px]">*</span>
+          </div>
           <div
-            class="w-[120px] h-[35px] leading-[35px] box-border border-[#bebebe] border-solid border-[1px] flex justify-start pl-[5px]"
+            class="w-[130px] h-[35px] leading-[35px] box-border border-[#bebebe] border-solid border-[1px] flex justify-start pl-[10px]"
           >
-            <Icon icon="logos:git-icon" class="mt-[10px] mr-[10px]" />GIT仓库
+            <Icon icon="logos:git-icon" class="mt-[11px] mr-[10px]" />GIT仓库
           </div>
         </div>
         <div>
-          <div>仓库名称<span>*</span></div>
+          <div class="font-bold mb-[5px] text-[16px]">
+            仓库名称<span class="text-[#ff0000] pl-[5px]">*</span>
+          </div>
           <input
             type="text"
             placeholder="仓库名称只支持字母、数字、下划线(_)、中划线(-)和点(.)的组合"
-            class="w-[450px] h-[35px]"
+            class="w-[500px] h-[35px] box-border border-[#bebebe] border-solid border-[1px] pl-[15px]"
           />
         </div>
       </div>
 
       <div>
-        <div>仓库描述</div>
+        <div class="font-bold mb-[5px] text-[16px]">仓库描述</div>
         <textarea
           placeholder="请输入仓库描述"
           name=""
           id=""
-          class="w-[80%] h-[100px]"
+          class="w-[80%] h-[100px] box-border border-[#bebebe] border-solid border-[1px] pl-[15px] pt-[15px]"
         ></textarea>
+      </div>
+      <div>
+        <div class="font-bold mb-[5px] text-[16px]">初始化仓库</div>
+        <div>
+          <Checkbox v-model:checked="checked"  class="my-[5px]">生成README文件</Checkbox><br>
+          <Checkbox v-model:checked="checked" class="my-[5px]">添加.gitignore文件</Checkbox><br>
+          <Checkbox v-model:checked="checked" class="my-[5px] text-[#bebebe]">添加分支模型 (仓库创建后根据所选模型创建分支)</Checkbox>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { Checkbox } from "ant-design-vue";
 import { Icon } from "@iconify/vue";
 import { useRouter } from "vue-router";
 import { getRope } from "@/service/index";
+import { ref } from "vue";
+const checked = ref(false);
 const router = useRouter();
 const returnrepo = () => {
   router.push({ path: "/coderepository" });
