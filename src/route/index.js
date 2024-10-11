@@ -16,14 +16,6 @@ const routes = [
     component: LayoutView,
     children: [
       {
-        path: "/home",
-        component: HomePage,
-      },
-      {
-        path: "/addrepo",
-        component: AddRope,
-      },
-      {
         path: "/coderepository",
         component: CodeRepository,
         children: [
@@ -44,6 +36,14 @@ const routes = [
             component: OriginRepo,
           },
         ],
+      },
+      {
+        path: "/home",
+        component: HomePage,
+      },
+      {
+        path: "/addrepo",
+        component: AddRope,
       },
     ],
   },
