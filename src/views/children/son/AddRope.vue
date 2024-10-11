@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="h-[150px]">
         <div class="font-bold mb-[5px] text-[16px]">仓库描述</div>
         <textarea
           placeholder="请输入仓库描述"
@@ -59,25 +59,54 @@
           class="w-[80%] h-[100px] box-border border-[#bebebe] border-solid border-[1px] pl-[15px] pt-[15px]"
         ></textarea>
       </div>
-      <div>
+      <div class="h-[115px]">
         <div class="font-bold mb-[5px] text-[16px]">初始化仓库</div>
         <div>
-          <Checkbox v-model:checked="checked"  class="my-[5px]">生成README文件</Checkbox><br>
-          <Checkbox v-model:checked="checked" class="my-[5px]">添加.gitignore文件</Checkbox><br>
-          <Checkbox v-model:checked="checked" class="my-[5px] text-[#bebebe]">添加分支模型 (仓库创建后根据所选模型创建分支)</Checkbox>
+          <CheckboxGroup
+            v-model:value="value1"
+            class="my-[5px] flex flex-col"
+            :options="plainOptions"
+            >生成README文件</CheckboxGroup
+          ><br />
         </div>
+      </div>
+
+      <div class="h-[100px]">
+        <div class="font-bold mb-[5px] text-[16px]">是否开源</div>
+        <div>
+          <RadioGroup v-model:value="value">
+            <Radio :style="radioStyle" :value="1">私有仓库（仅对仓库成员可见，仓库成员可访问仓库。）</Radio>
+            <Radio :style="radioStyle" :value="2">公开仓库</Radio>
+          </RadioGroup>
+        </div>
+      </div>
+
+      <div class="h-[30px]">
+        <Button type="primary" class="bg-black">完成创建</Button>
+        <Button class="ml-[10px]">取消</Button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { Checkbox } from "ant-design-vue";
+import { CheckboxGroup,Radio,RadioGroup,Button} from "ant-design-vue";
 import { Icon } from "@iconify/vue";
 import { useRouter } from "vue-router";
 import { getRope } from "@/service/index";
-import { ref } from "vue";
-const checked = ref(false);
+import { reactive, ref } from 'vue';
+const value = ref(1);
+const radioStyle = reactive({
+  display: 'flex',
+  height: '30px',
+  lineHeight: '30px',
+});
+const plainOptions = [
+  "生成README文件",
+  "添加.gitignore文件",
+  "添加分支模型 (仓库创建后根据所选模型创建分支)",
+];
+
 const router = useRouter();
 const returnrepo = () => {
   router.push({ path: "/coderepository" });
