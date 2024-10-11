@@ -82,7 +82,7 @@
       </div>
 
       <div class="h-[30px]">
-        <Button type="primary" class="bg-black">完成创建</Button>
+        <Button type="primary" class="bg-black" @click="addrepo">完成创建</Button>
         <Button class="ml-[10px]">取消</Button>
       </div>
     </div>
@@ -95,6 +95,7 @@ import { Icon } from "@iconify/vue";
 import { useRouter } from "vue-router";
 import { getRope } from "@/service/index";
 import { reactive, ref } from 'vue';
+import to from "await-to-js";
 const value = ref(1);
 const radioStyle = reactive({
   display: 'flex',
@@ -121,7 +122,29 @@ const repo = {
   scope:
     "user_info projects pull_requests issues notes keys hook groups gists enterprises",
 };
-getRope(repo).then((res) => {
-  console.log(res);
-});
+// getRope(repo).then((res) => {
+//   console.log(res);
+// });
+// const { notification } = App.useApp();
+
+// const userLoginInfo = ref({
+//   username: "1239303157@qq.com",
+//   password: "cyl20041030",
+// });
+const addrepo = async () => {
+  const repoData = {
+  access_token: "bacd0fa0b4da52d3a1b2a2a4eecc9b4d",
+  token_type: "bearer",
+  expires_in: 86400,
+  refresh_token:
+    "2f7a0a072963bc3493f20f0214c4399728f8be9ae5cc03b4d9809548969751f6",
+  scope:
+    "user_info projects pull_requests issues notes keys hook groups gists enterprises",
+};
+  const [err, res] = await to(getRope(repoData));
+  if (!err) {
+    // notification.success({ message: "🎉恭喜你，创建成功！" });
+    router.replace("/coderepository/recently");
+  }
+};
 </script>
